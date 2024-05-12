@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bbh4ge44t2dyw"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/choice_text.gd" id="1_6d8rl"]
+
+[node name="ChoiceText" type="RichTextLabel"]
+custom_minimum_size = Vector2(100, 30)
+offset_right = 100.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "Hello!"
+fit_content = true
+script = ExtResource("1_6d8rl")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

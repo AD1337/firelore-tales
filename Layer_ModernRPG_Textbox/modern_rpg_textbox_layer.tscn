@@ -1,0 +1,351 @@
+[gd_scene load_steps=32 format=3 uid="uid://vy6buk8knehl"]
+
+[ext_resource type="Theme" uid="uid://bbaetfx3u0x18" path="res://src/themes/modern_rpg_textbox_default_theme.tres" id="1_8a6hk"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/modern_rpg_textbox_layer.gd" id="1_46hvm"]
+[ext_resource type="PackedScene" uid="uid://d0bbffm4w2xvj" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/display_text.tscn" id="1_y0fl2"]
+[ext_resource type="PackedScene" uid="uid://bbh4ge44t2dyw" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/choice_text.tscn" id="3_6fxn2"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/text_scroll_container.gd" id="4_ekg2q"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/fader.gd" id="5_2fqn2"]
+[ext_resource type="AudioStream" uid="uid://cgoswmi2xx2e4" path="res://assets/audio/music/short loops/impeto.mp3" id="5_5s3ii"]
+[ext_resource type="AudioStream" uid="uid://bd1byq15h8u3o" path="res://assets/audio/sfx/step/step1.mp3" id="5_e8g7q"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_ModernRPG_Textbox/portrait.gd" id="6_dluqv"]
+[ext_resource type="AudioStream" uid="uid://bt6ii3yuamng" path="res://assets/audio/sfx/step/step2.mp3" id="6_fpldn"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.gd" id="6_lsg12"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="7_dq1sg"]
+[ext_resource type="AudioStream" uid="uid://bo4pu10pugbga" path="res://assets/audio/sfx/step/step3.mp3" id="7_ukn7q"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="8_trwk6"]
+[ext_resource type="AudioStream" uid="uid://dvccrs0hv8s4h" path="res://assets/audio/sfx/step/step4.mp3" id="8_wr2cy"]
+[ext_resource type="AudioStream" uid="uid://1nxpvfsh5h7u" path="res://assets/audio/sfx/step/step5.mp3" id="9_besro"]
+[ext_resource type="AudioStream" uid="uid://b6c1p14bc20p1" path="res://addons/dialogic/Example Assets/sound-effects/typing1.wav" id="9_rcppl"]
+[ext_resource type="AudioStream" uid="uid://c2viukvbub6v6" path="res://addons/dialogic/Example Assets/sound-effects/typing4.wav" id="10_6yuri"]
+[ext_resource type="AudioStream" uid="uid://bsmkitck4txiv" path="res://assets/audio/sfx/step/step6.mp3" id="10_ramap"]
+[ext_resource type="AudioStream" uid="uid://bkl1y6pfi3gv0" path="res://assets/audio/sfx/step/step7.mp3" id="11_1v5hq"]
+[ext_resource type="AudioStream" uid="uid://wbtrkc7l3arj" path="res://assets/audio/sfx/step/step8.mp3" id="12_32jyt"]
+[ext_resource type="StyleBox" uid="uid://bu0tsjabpj4rd" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/choice_panel_focus.tres" id="12_a3gp0"]
+[ext_resource type="AudioStream" uid="uid://c1kyv481ffytw" path="res://assets/audio/sfx/step/step9.mp3" id="13_5k5u5"]
+[ext_resource type="StyleBox" uid="uid://xs2s6euq5stw" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/choice_panel_hover.tres" id="13_j8iv6"]
+[ext_resource type="StyleBox" uid="uid://wrp8f7ard3uu" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/choice_panel_normal.tres" id="14_ptiby"]
+[ext_resource type="AudioStream" uid="uid://14whtniy5vgt" path="res://assets/audio/sfx/step/step10.mp3" id="14_uig40"]
+[ext_resource type="FontFile" uid="uid://cflnce7xujs4n" path="res://assets/fonts/Lora-VariableFont_wght.ttf" id="15_7tftd"]
+[ext_resource type="Texture2D" uid="uid://cu7g4b6vwpsvw" path="res://assets/art/portraits/portrait1.jpg" id="16_dh4qe"]
+[ext_resource type="Texture2D" uid="uid://bsenqcx26r74j" path="res://assets/art/chapters/chapter1.png" id="27_jir5f"]
+
+[sub_resource type="AudioStream" id="AudioStream_pe27w"]
+
+[sub_resource type="Theme" id="Theme_rdy6k"]
+Button/styles/focus = ExtResource("12_a3gp0")
+Button/styles/hover = ExtResource("13_j8iv6")
+Button/styles/normal = ExtResource("14_ptiby")
+
+[node name="ModernRpgTextboxLayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_8a6hk")
+script = ExtResource("1_46hvm")
+scene_display_text = ExtResource("1_y0fl2")
+scene_choice_text = ExtResource("3_6fxn2")
+custom_bold_font = "res://assets/fonts/Lora-Bold.ttf"
+custom_italic_font = "res://assets/fonts/Lora-Italic.ttf"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_5s3ii")
+
+[node name="Audios" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("5_e8g7q")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("6_fpldn")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("7_ukn7q")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("8_wr2cy")
+
+[node name="AudioStreamPlayer5" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("9_besro")
+
+[node name="AudioStreamPlayer6" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("10_ramap")
+
+[node name="AudioStreamPlayer7" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("11_1v5hq")
+
+[node name="AudioStreamPlayer8" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("12_32jyt")
+
+[node name="AudioStreamPlayer9" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("13_5k5u5")
+
+[node name="AudioStreamPlayer10" type="AudioStreamPlayer" parent="Audios"]
+stream = ExtResource("14_uig40")
+
+[node name="Fader" type="Node" parent="."]
+script = ExtResource("5_2fqn2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="MarginContainer2" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="HBoxContainer" parent="MarginContainer2"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+color = Color(0.753906, 0.592365, 0.569806, 0.164706)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+color = Color(0.0429688, 0.0429688, 0.0429688, 0.517647)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2"]
+layout_mode = 2
+
+[node name="TextScrollContainer" type="ScrollContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("4_ekg2q")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="TextContainer" type="VBoxContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="DisplayText" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer" instance=ExtResource("1_y0fl2")]
+layout_mode = 2
+text = "Hello!
+This is more stuff."
+
+[node name="VN_ChoiceLayer" type="VBoxContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("6_lsg12")
+font_use_global = false
+font_custom = "res://assets/fonts/Lora-VariableFont_wght.ttf"
+font_size_use_global = false
+font_size_custom = 18
+text_color_use_global = false
+text_color_custom = Color(0.566406, 0.566406, 0.566406, 1)
+boxes_min_size = Vector2(0, 50)
+sounds_volume = -80.0
+apply_overrides_on_ready = true
+
+[node name="Choices" type="VBoxContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+metadata/_edit_layout_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+
+[node name="DialogicNode_ChoiceButton1" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton3" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton4" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton5" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton6" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton7" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton8" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton9" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton10" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ChoiceButton11" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+layout_mode = 2
+text = "Some text"
+alignment = 0
+script = ExtResource("7_dq1sg")
+
+[node name="DialogicNode_ButtonSound" type="AudioStreamPlayer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer/VN_ChoiceLayer/Choices"]
+unique_name_in_owner = true
+script = ExtResource("8_trwk6")
+sound_pressed = ExtResource("9_rcppl")
+sound_hover = ExtResource("10_6yuri")
+sound_focus = SubResource("AudioStream_pe27w")
+
+[node name="ContinueContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ExtraSpace" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer/MarginContainer/TextContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_right = 50
+
+[node name="ButtonContinue" type="Button" parent="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/MarginContainer2"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 60)
+layout_mode = 2
+theme = SubResource("Theme_rdy6k")
+theme_override_fonts/font = ExtResource("15_7tftd")
+theme_override_font_sizes/font_size = 18
+text = "Continue [Spacebar or Enter]"
+
+[node name="ColorRect2" type="ColorRect" parent="MarginContainer2/MarginContainer"]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+color = Color(0.753906, 0.592365, 0.569806, 0.164706)
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer2/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 200
+
+[node name="ChapterImage" type="TextureRect" parent="MarginContainer2/MarginContainer/MarginContainer3"]
+layout_mode = 2
+texture = ExtResource("27_jir5f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="PortraitContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="PortraitContainer"]
+visible = false
+layout_mode = 0
+offset_left = 285.0
+offset_top = 180.0
+offset_right = 534.0
+offset_bottom = 537.0
+color = Color(1, 1, 1, 0.0588235)
+
+[node name="Portrait" type="TextureRect" parent="PortraitContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 200)
+layout_mode = 2
+offset_left = 194.0
+offset_top = 178.0
+offset_right = 531.0
+offset_bottom = 646.083
+texture = ExtResource("16_dh4qe")
+expand_mode = 5
+script = ExtResource("6_dluqv")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="gui_input" from="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer" to="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/TextScrollContainer" method="_on_gui_input"]
+[connection signal="pressed" from="MarginContainer2/MarginContainer/VBoxContainer/MarginContainer2/MarginContainer2/VBoxContainer/MarginContainer2/ButtonContinue" to="." method="_on_button_continue_pressed"]
